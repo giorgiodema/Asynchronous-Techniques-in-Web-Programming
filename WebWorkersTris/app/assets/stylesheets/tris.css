@@ -1,0 +1,60 @@
+h1,h3{
+    text-align: center;
+    color:green;
+}
+hr{
+    color:green;
+}
+
+#scores{
+    border-collapse: collapse;
+    margin:auto;
+}
+
+#scores th{
+    color:green;
+    border-bottom: 1px solid green;
+}
+
+#computer_turn, #player_win, #computer_win, #new_game, #tie{
+    display:none;
+}
+
+#new_game{
+    margin:auto;
+}
+
+
+#matrix{
+    display: table;
+    border-collapse: collapse;
+    margin:auto;
+}
+
+#matrix td{
+    border:1px solid black;
+    height:120px;
+    width:120px;
+
+    margin:0;
+    padding:0;
+}
+
+#matrix tr{
+    margin:0;
+    padding:0;
+}
+
+img{
+    height:120px;
+    width:120px; 
+}
+
+.o_img{
+    display:none;
+}
+
+
+.x_img{
+    display:none;
+}
