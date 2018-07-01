@@ -1,0 +1,24 @@
+<% if @chats %> <!-- ho aggiunto un controllo perché nel caso di show_profile non passo le chat -->
+
+<ul id=chats_list class="col-md-12 group-list chat_list">
+
+    <li class="list-group-item list-group-item-action active chat_list_title">
+        <h2> Chats </h2>
+    </li>
+
+    <% @chats.each do |c| %>
+    <li class="list-group-item list-group-item-action chat_list_item" id="chat_item_<%= c.id%>">
+        <meta name="chat_id" content= <%= c.id %> >
+        <% if @user.username == c.owner.username then @aux = c.guest else @aux = c.owner end%>
+        <%= image_tag(@aux.image.url, alt: 'Image',class: 'chat_user_img') %>
+        
+        <p>
+            <%= @aux.username %>
+        </p>
+
+        <input type="button" class="delete_chat btn-sm" value="delete">
+    </li>
+    <% end %>
+
+    </ul>
+<% end %>

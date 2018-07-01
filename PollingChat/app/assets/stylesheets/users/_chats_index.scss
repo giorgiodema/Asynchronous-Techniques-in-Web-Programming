@@ -1,0 +1,50 @@
+
+
+.chat_list{
+
+    list-style-type:none;
+    height:100%;
+    overflow:auto;
+
+    li{
+
+        height:110px;
+        .chat_user_img{
+            border-radius:50%;
+
+            width:80px;
+            height:80px;
+
+            float:left;
+            margin:0;
+            padding:0;
+
+            object-fit: cover;
+        }
+
+        p{
+            float:left;
+            margin-left:5px;
+            margin-bottom:0;
+        }
+
+        .status_online{
+            float:right;
+            color:green;
+
+        }
+
+        .status_offline{
+            float:right;
+            color:red;
+
+        }
+
+        input{
+            float:right;
+            clear:right;
+        }
+    }
+
+
+}

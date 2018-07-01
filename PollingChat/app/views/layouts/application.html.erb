@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PollingChat</title>
+    <%= csrf_meta_tags %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <%= stylesheet_link_tag "https://bootswatch.com/4/sketchy/bootstrap.min.css" %>
+  </head>
+
+  <body>
+
+  <div class="col-md-12 flash_container">
+    <% if flash[:notice] %>
+      <div class="alert alert-dismissible alert-success"><%= flash[:notice] %></div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-dismissible alert-warning"><%= flash[:alert] %></div>
+    <% end %>
+    <% if flash[:error] %>
+      <div class="alert alert-dismissible alert-danger"><%= flash[:error] %></div>
+    <% end %>
+  </div>
+
+  <h1 class="display-3 title">PollingChat</h1>
+
+  <div class="col-md-12 topnav">
+    <%= button_to "HOME", root_path, :method => 'get', class: "btn-lg btn-warning" %>
+        <%if user_signed_in?%>
+          <% user = current_user %>
+          <%= button_to "#{user.username.upcase}", profile_path(user.id), :method => 'get', class: "btn-lg btn-success profile_btn"%>
+          
+          <%= button_to "Log out", destroy_user_session_path, :method => 'delete', class: "btn-lg btn-danger logout_btn", id: "logoutbutton" %>
+        <%else%>
+          <%= button_to "Log in", new_user_session_path, :method => 'get', class: "btn-lg btn-success login_btn" , id: "loginbutton"%>
+          <%= button_to "Sign up", new_user_registration_path, :method => 'get', class: "btn-lg btn-info signin_btn", id: "signupbutton" %>
+        <%end%>
+  </div>
+
+  <%= yield %>
+
+</body>
+</html>

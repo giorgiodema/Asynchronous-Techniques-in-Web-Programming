@@ -1,0 +1,47 @@
+I"Æ(function() {
+  App.mailbox = App.cable.subscriptions.create("MailboxChannel", {
+    connected: function() {
+      return console.log("MailboxChannel ::: Opened");
+    },
+    disconnected: function() {
+      return console.log("MailboxChannel ::: Closed");
+    },
+    received: function(data) {
+      console.log("MailboxChannel ::: Received data");
+      if (data.type === "message") {
+        console.log("Type = MESSAGE");
+        $("#" + data.chat_id).children(".input_box").val("");
+        $("#" + data.chat_id).children(".message_box").append("<li class=received_message><p class=message_text> " + data.text + " </p></li>");
+        $("#" + data.chat_id).children(".message_box").animate({
+          scrollTop: $("#" + data.chat_id).children(".message_box").prop("scrollHeight")
+        }, 500);
+      }
+      if (data.type === "delete_chat") {
+        console.log("Type = DELETE_CHAT");
+        $("#chat_item_" + data.chat_id).remove();
+        $("#" + data.chat_id).remove();
+      }
+      if (data.type === "create_chat") {
+        window.chat_controller.render_chat_list_item(data.chat_id, data.username);
+        window.chat_controller.render_chat_div(chat_id);
+        window.chat_controller.show_chat();
+        window.chat_controller.hide_chat();
+        window.chat_controller.send_message();
+        window.chat_controller.delete_chat();
+        window.chat_controller.create_chat();
+      }
+      if (data.type === "update_status") {
+        console.log("Type = UPDATE_STATUS");
+        if (data.status === "online") {
+          $("#chat_item_" + data.chat_id).children(".status_online").css("display", "block");
+          return $("#chat_item_" + data.chat_id).children(".status_offline").css("display", "none");
+        } else {
+          $("#chat_item_" + data.chat_id).children(".status_online").css("display", "none");
+          return $("#chat_item_" + data.chat_id).children(".status_offline").css("display", "block");
+        }
+      }
+    }
+  });
+
+}).call(this);
+:ET

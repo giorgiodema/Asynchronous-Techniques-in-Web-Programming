@@ -1,0 +1,51 @@
+.picture_box{
+    height:220px;
+}
+
+.info_box{
+    height:220px;
+    text-align:center;
+    padding-top:20px;
+}
+.user_img{
+
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    object-fit: cover;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.users_list{
+    overflow:auto;
+    height:800px;
+
+    li{
+        height:auto;
+    }
+}
+
+.list_user_img{
+    border-radius:50%;
+
+    width:80px;
+    height:80px;
+
+    float:left;
+    margin:0;
+    padding:0;
+
+    object-fit: cover;
+}
+
+#users_searchbar{
+    padding:5px;
+    margin:20px;
+}
+
+

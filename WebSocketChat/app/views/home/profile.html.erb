@@ -1,0 +1,62 @@
+<div id='profilepage'>
+<!-- IMPORTANTE per far funzionare i channels -->
+<meta name='userid' content="<%=current_user.id%>">
+<!-- ######################################## -->
+
+<%if @user.id == current_user.id %>
+    <%= render partial: "chat", locals: {user:@user, chats:@chats} %>
+<%end%>
+
+<div class="col-md-4 left_panel">
+
+    <div class="col-md-12 picture_box">
+        <%= image_tag(@user.image.url, alt: 'Image',class: 'user_img') %>
+    </div>
+
+
+    <div class="col-md-12 info_box">
+            <br><br>
+            Name: <small class="text-success"><%= @user.name %><br></small>
+            Surname: <small class="text-success"><%= @user.surname %><br></small>
+            Username: <small class="text-success"><%= @user.username %><br></small>
+            Email: <small class="text-success"><%= @user.email %><br></small>
+  
+    </div>
+</div>
+
+<!-- IMPORTANTE per far funzionare i channels -->
+<meta name='userid' content="<%=current_user.id%>">
+<!-- ######################################## -->
+
+<div class="col-md-4 list-group">
+<h4 class="list-group-item list-group-item-action active">
+    All users
+</h4>
+<input type="text" id="users_searchbar" placeholder="Search for names..">
+<ul class="list-group users_list" id = "admin_users_list">
+    <% User.all.order('username').each do |user| %>
+
+            <% if user.id != current_user.id %>
+                <li class="list-group-item list-group-item">
+                    <meta name="user_id" content="<%= user.id %>">
+                    <%= image_tag(user.image.url, alt: 'Image',class: 'list_user_img') %>
+                    <%= link_to "#{user.username}",profile_path(user.id) %>
+                    <button  type="button" class="btn btn-success start_chat">Chat</button>
+                </li>
+            <% end %>
+
+    <% end %>
+</ul>
+</div>
+
+
+<div class="col-md-4 right_panel">
+    <%if @user.id == current_user.id %>
+        <%= render partial: "chats_index", locals: { chats: @chats } %>
+    <%end%>
+</div>
+
+</div>
+
+
+
