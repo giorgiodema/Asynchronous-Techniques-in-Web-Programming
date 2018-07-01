@@ -1,7 +1,5 @@
 # Asynchronous Techniques in Web Programming
 
-## Index
-
 ### WebWorkersTris
 Example of asynchronous programming with Javascript and WebWorkers. It's a WebApp that lets you play tetris against computer.
 
