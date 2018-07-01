@@ -17,5 +17,5 @@ WebChat realized with WebSocket protocol. WebSocket provides a full-duplex chann
 ## SetUp
 - Make sure you have postgresql server running (the applications assumes postgresql running on localhost and listening on port: 5432)
 - Run `$ bundle install` to install dependencies
-- Run `$ rails db:create && rails db:migrate && rails db:seed` to set up database (WebWorkerTris doesn't need to set up database)
+- Run `$ rails db:drop && rails db:create && rails db:migrate && rails db:seed` to set up database (WebWorkerTris doesn't need to set up database)
 - Run `$ rails s` to run server
